@@ -63,7 +63,7 @@ def company_create(request):
         form = CompanyForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('company_list.html'))
+            return redirect(reverse('company_list'))
         return render(request, 'company_form.html', {'form': form})
     else:
         form = CompanyForm()
@@ -76,7 +76,7 @@ def company_update(request, pk):
         form = CompanyForm(request.POST, instance=company)
         if form.is_valid():
             form.save()
-            return redirect(reverse('company_list.html'))
+            return redirect(reverse('company_list'))
         return render(request, 'company_form.html', {'form': form})
     else:
         form = CompanyForm(instance=company)
@@ -87,11 +87,6 @@ def company_update(request, pk):
 
 def student_list(request):
     student = Student.objects.all()
-    search = request.GET.get('search')
-    if search:
-        student = student.filter(Q(first_name__icontains=search)
-                                     | (Q(last_name__icontains=search))
-                                     | Q(email__icontains=search))
     return render(request, 'student_list.html', {'student': student})
 
 def student_create(request):

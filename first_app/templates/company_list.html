@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Company List{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Company Information</h2>
+
+    {% if companies %}
+        {% for company in companies %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ company.name }}</h5>
+                    <p class="card-text">
+                        <strong>Address:</strong> {{ company.address }}<br>
+                        <strong>Email:</strong> {{ company.email }}<br>
+                        <strong>Tax Code:</strong> {{ company.tax_code }}
+                    </p>
+                    <a href="{% url 'company_update' company.pk %}" class="btn btn-primary">Update</a>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <div class="alert alert-info">
+                No company information available.
+                <a href="{% url 'company_create' %}" class="btn btn-primary">Create Company</a>
+            </div>
+    {% endif %}
+
+    {% if companies.count == 0 %}
+        <a href="{% url 'company_create' %}" class="btn btn-primary">Create Company</a>
+    {% endif %}
+</div>
+{% endblock %}

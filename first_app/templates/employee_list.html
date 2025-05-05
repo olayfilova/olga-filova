@@ -14,23 +14,7 @@ EMPLOYEE LIST
             </div>
         </div>
     </form>
-    <div class="row mb-3">
 
-        <a href="{% url 'salary_calc'%}" class="btn btn-info"> Salary Calculator</a>
-
-</div>
-
- <div class="row mb-3">
-     <a href="{% url 'homework_querysets'%}" class="btn btn-info"> 'homework_querysets'</a>
- </div>
-
- <div class="row mb-3">
-     <a href="{% url 'leave_create'%}" class="btn btn-info"> 'leave_create'</a>
- </div>
-
-  <div class="row mb-3">
-     <a href="{% url 'leave_list'%}" class="btn btn-info"> 'leave_list'</a>
- </div>
     <table class="table">
         <thead>
         <tr>
@@ -38,7 +22,6 @@ EMPLOYEE LIST
             <th>Last Name</th>
             <th>Email</th>
             <th>Position</th>
-            <th>Salary</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -48,9 +31,7 @@ EMPLOYEE LIST
             <td>{{employee.first_name}}</td>
             <td>{{employee.last_name}}</td>
             <td>{{employee.email}}</td>
-
             <td>{{employee.position.title}}</td>
-            <td>{{employee.salary}}</td>
                 <td>{% if request.user.is_superuser%}
                 <a href="{%url 'employee_update' employee.pk%}" class="btn btn-primary">Update</a>
                 <a href="{%url 'employee_delete' employee.pk%}" class="btn btn-primary">Delete</a>
@@ -63,5 +44,3 @@ EMPLOYEE LIST
     </table>
 </div>
 {% endblock %}
-
-

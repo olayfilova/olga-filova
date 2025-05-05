@@ -13,7 +13,7 @@
 
         {% for field in form %}
             <div class="form-group mb-3">
-                <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                <label for="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>
                 {{ field }}
                 {% if field.errors %}
                     <div class="text-danger">
@@ -32,5 +32,3 @@
     </form>
 </div>
 {% endblock %}
-
-

@@ -18,8 +18,5 @@ class Company(models.Model):
         return super(Company, self).save(*args, **kwargs)
 
 
-
     def __str__(self):
         return self.name
-
-

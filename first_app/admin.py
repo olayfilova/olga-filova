@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Employee, Department, Position, Experiment, Article
+from .models import Employee, Department, Position
 from django.contrib import admin
 from .models import Student, Course, Company
 
@@ -26,7 +26,7 @@ class DbConnection:
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display=('username', 'position', 'email', 'hire_date', 'salary')
+    list_display=('username', 'position', 'email', 'hire_date')
 
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
@@ -52,16 +52,5 @@ class CompanyAdmin(admin.ModelAdmin):
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = ['name', 'learning_plan']
-
-
-
-# @admin.register(Experiment)
-# class ExperimentAdmin(admin.ModelAdmin):
-#     pass
-
-
-@admin.register(Article)
-class ArticleExperiment(admin.ModelAdmin):
-    list_display = ['title', 'status', 'created_at']
 
 

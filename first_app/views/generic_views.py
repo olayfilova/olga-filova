@@ -4,10 +4,14 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, FormView, DeleteView, CreateView, UpdateView
 
-from forms import EmployeeForm, SalaryForm
-from models import Employee
-from salary_calculator import CalculateMonthSalaryRate
-from first_app.utils import is_user_superuser
+from first_app.forms import EmployeeForm, SalaryForm
+from first_app.models import Employee
+from first_app.salary_calculator import CalculateMonthSalaryRate
+from first_app.my_utils import is_user_superuser
+from first_app.mixins import UserIsAdminMixin
+
+
+
 
 class EmployeeListView(ListView):
     model=Employee
@@ -25,52 +29,52 @@ class EmployeeListView(ListView):
             return queryset
 
 
-class EmployeeCreateView(CreateView):
+class EmployeeCreateView( UserIsAdminMixin ,CreateView):
     model=Employee
     form_class=EmployeeForm
     template_name='employee_form.html'
     success_url=reverse_lazy('employee_list')
 
-    def test_funk(self):
-        return is_user_superuser(self.request.user)
+    # def test_funk(self):
+    #     return is_user_superuser(self.request.user)
 
 
-class EmployeeUpdateView(UpdateView):
+class EmployeeUpdateView(UserIsAdminMixin, UpdateView):
     model=Employee
     form_class=EmployeeForm
     template_name='employee_form.html'
     success_url=reverse_lazy('employee_list')
 
-    def test_funk(self):
-        return is_user_superuser(self.request.user)
+    # def test_funk(self):
+    #     return is_user_superuser(self.request.user)
 
 
     def is_user_superuser(user):
         pass
 
 
-class EmployeeDeleteView(DeleteView):
+class EmployeeDeleteView(UserIsAdminMixin, DeleteView):
     model=Employee
     template_name='employee_confirm_delete.html'
     success_url=reverse_lazy('employee_list')
 
-    def test_funk(self):
-        return is_user_superuser(self.request.user)
+    # def test_funk(self):
+    #     return is_user_superuser(self.request.user)
 
 
 
-class SalaryCalculatorView(UserPassesTestMixin, FormView):
+class SalaryCalculatorView(UserIsAdminMixin, FormView):
     template_name='salary_calculator.html'
     form_class=SalaryForm
     success_url=reverse_lazy('salary_calculator')
 
-    def test_func(self):
-        return is_user_superuser(self.request.user)
+    # def test_func(self):
+    #     return is_user_superuser(self.request.user)
 
-    def form_valid(self, form):
-        days_dict=form.cleaned_data
-        salary=CalculateMonthSalaryRate(days_dict)
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     days_dict=form.cleaned_data
+    #     salary=CalculateMonthSalaryRate(days_dict)
+    #     return super().form_valid(form)
 
     def get(self, request, *args ,**kwargs):
         form=self.form_class()
@@ -93,4 +97,4 @@ class SalaryCalculatorView(UserPassesTestMixin, FormView):
         return render(request=self.request,
                       template_name=self.template_name,
                       context={'form': form, 'calculated_salary': salary})
-                      , self.template_name, {'form': form, 'salary': salary})
+                      #, self.template_name, {'form': form, 'salary': salary})

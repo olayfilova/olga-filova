@@ -1,6 +1,6 @@
 #from first_app.models import *
 #did not react to the first_app import
-from django.db.models import Count
+from django.db.models import Count, Value, CharField
 
 from first_app.models import Article, Department, Position
 
@@ -13,7 +13,7 @@ def examples():
     non_draft_articles=Article.objects.exclude(status=-1)
 
     active_position=Department.objects.annotate(num_positions=Count('position'))
-    active_position.annotate(position ='position')
+    #active_position=active_position.annotate(position = Value('position', output_field=CharField()))
 
 
 
@@ -22,7 +22,7 @@ def examples():
     #unique_positions=Position.objects.distinct('title')
     first_art=Article.objects.first()
     last_art=Article.objects.last()
-    pub = Article.objects.published().exists()
+    #pub = Article.objects.published().exists()
 
     for a in Article.objects.iterator():
         print(a)

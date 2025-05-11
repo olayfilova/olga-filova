@@ -4,7 +4,7 @@ from first_app.models import Employee, Company, Student
 from django.shortcuts import render, redirect, get_object_or_404
 
 from first_app.forms import CompanyForm, EmployeeForm, StudentForm
-
+from first_app.querysets import examples
 #from first_app.models import company, student
 
 
@@ -130,3 +130,8 @@ def student_delete(request, pk):
 def queryset(request):
     employees = Employee.objects.all()
     return render(request, 'employee_list.html', {'employees': employees})
+
+
+def queryset_route(request):
+    examples()
+    return HttpResponse()

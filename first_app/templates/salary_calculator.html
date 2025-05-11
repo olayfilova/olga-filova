@@ -2,9 +2,103 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .salary-card {
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .summary-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card salary-card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Employee Salary Calculator</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Employee Information -->
+                        <div class="mb-4">
+                            <h4>Employee Details</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="employee">Employee Name:</label>
+                                        <input type="text" class="form-control" id="employee" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="position">Position:</label>
+                                        <input type="text" class="form-control" id="position" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Work Days Summary -->
+                        <div class="summary-box">
+                            <h5>Work Days Summary</h5>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p>Working Days: <span class="badge bg-success" id="workingDays">0</span></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p>Sick Days: <span class="badge bg-warning" id="sickDays">0</span></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p>Holidays: <span class="badge bg-info" id="holidays">0</span></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p>Weekends: <span class="badge bg-secondary" id="weekends">0</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Salary Calculation Results -->
+                        <div class="mt-4">
+                            <h4>Salary Breakdown</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>Base Working Days Payment:</td>
+                                            <td class="text-end" id="workDaysPayment">$0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sick Days Payment:</td>
+                                            <td class="text-end" id="sickDaysPayment">$0.00</td>
+                                        </tr>
+                                        <tr class="table-primary">
+                                            <th>Total Salary:</th>
+                                            <th class="text-end" id="totalSalary">$0.00</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Monthly Rate Warning -->
+                        <div class="alert alert-info mt-3" role="alert">
+                            <i class="bi bi-info-circle"></i>
+                            Total salary cannot exceed the monthly rate limit.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

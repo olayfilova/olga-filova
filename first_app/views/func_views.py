@@ -125,3 +125,8 @@ def student_delete(request, pk):
         student.delete()
         return redirect(reverse('student_list'))
     return render(request, 'student_confirm_delete.html', {'student': student})
+
+###need to adj
+def queryset(request):
+    employees = Employee.objects.all()
+    return render(request, 'employee_list.html', {'employees': employees})

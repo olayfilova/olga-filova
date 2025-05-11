@@ -1,12 +1,9 @@
-import datetime
-import logging
 import math
 from abc import ABC, abstractmethod
-from first_app.models import Employee, MonthlySalary
+from first_app.models import Employee
 
-from first_app.common.enums import WorkDayEnum
+from common.enums import WorkDayEnum
 
-logger=logging.getLogger("default")
 
 class AbstractSalaryCalculator(ABC):
     sick_days_multiplier=0.6
@@ -19,6 +16,7 @@ class AbstractSalaryCalculator(ABC):
         raise NotImplementedError()
 
 
+
 class CalculateMonthSalaryRate(AbstractSalaryCalculator):
     def __init__ (self, employee: Employee):
 
@@ -27,13 +25,13 @@ class CalculateMonthSalaryRate(AbstractSalaryCalculator):
 
     @staticmethod
     def _calculate_base_work_days(days_dict):
-        return len(
-            {day: work_type for day, work_type in days_dict.items() if work_type not in(WorkDayEnum.WEEKEND.name, WorkDayEnum.HOLLIDAY.name)})
+        return len({day: work_type for day, work_type in days_dict.items() if work_type not in(WorkDayEnum.WEEKEND.name, WorkDayEnum.HOLLIDAY.name)})
 
 
     def _get_daily_salary(self, base_working_days:int):
-        return math.ceil(self.employee.position.monthly_rate/base_working_days)
-#monthlt_rate salary
+        return math.ceil(self.employee.position.salary/base_working_days)
+
+
 
     def _calculate_sick_days_payment(self, sick_days: int):
         return sick_days*self._daily_payment*self.sick_days_multiplier
@@ -56,26 +54,9 @@ class CalculateMonthSalaryRate(AbstractSalaryCalculator):
         # return salary
         #return sum([hours*Employee.SALARY_PER_HOUR for day, hours in days_dict.items()])
         self._daily_payment= self._get_daily_salary(base_working_days=self._calculate_base_work_days(days_dict))
-        work_days_payment=self._get_work_days_payment(days_dict)
-        sick_days_payment=self._get_sick_days_payment(days_dict)
+        work_days_payment=...
+        sick_days_payment=...
 
         salary= work_days_payment + sick_days_payment
 
         return salary if salary<=self.employee.position.monthly_rate else self.employee.position.monthly_rate
-
-
-    def save_salary(self, salary:int, date: datetime.date):
-        start_month_date=date.replace(day=1)
-        # try:
-        #     MonthlySalary.objects.get(date=start_month_date, employee=self.employee)
-        # except MonthlySalary.DoesNotExist:
-        #     MonthlySalary.objects.create(date=start_month_date, employee=self.employee, salary=salary)
-        if MonthlySalary.objects.filter(date=start_month_date, employee=self.employee).exists():
-            logging.warning(f"Salary for {self.employee} start month {start_month_date.month}/{start_month_date.year} already paid!!")
-        else:
-            MonthlySalary.objects.update_or_create(date=start_month_date,
-                                                   employee=self.employee,
-                                                   salary=salary,
-                                                   is_paid=True
-
-                                                   )

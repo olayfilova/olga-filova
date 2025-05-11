@@ -1,6 +1,7 @@
 from django.urls import path
 from first_app.views import func_views
 
+from views import generic_views
 
 urlpatterns=[
     path('employees/', func_views.employee_list, name='employee_list'),
@@ -18,4 +19,6 @@ urlpatterns=[
     path('students/update/<int:pk>', func_views.student_update, name='student_update'),
     path('students/create/<int:pk>', func_views.student_create, name='student_create'),
     path('students/delete/<int:pk>', func_views.student_delete, name='student_delete'),
+    path('querysets/', func_views.queryset, name='queryset'),
+    path('salary-calculator/', generic_views.SalaryCalculatorView.as_view(), name='salary_calc')
 ]

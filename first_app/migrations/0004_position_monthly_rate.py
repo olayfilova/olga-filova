@@ -9,7 +9,6 @@ class Migration(migrations.Migration):
         ('first_app', '0003_company_course_learning_plan_student_phone_number'),
     ]
 
-
     operations = [
         migrations.AddField(
             model_name='position',

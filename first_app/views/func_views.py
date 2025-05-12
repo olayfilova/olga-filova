@@ -9,6 +9,7 @@ from first_app.querysets import examples
 #from first_app.models import company, student
 
 
+
 def employee_list(request):
     employees=Employee.objects.all()
     search= request.GET.get('search')

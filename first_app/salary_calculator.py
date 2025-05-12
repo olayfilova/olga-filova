@@ -16,7 +16,6 @@ class AbstractSalaryCalculator(ABC):
         raise NotImplementedError()
 
 
-
 class CalculateMonthSalaryRate(AbstractSalaryCalculator):
     def __init__ (self, employee: Employee):
 

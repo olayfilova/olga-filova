@@ -12,3 +12,4 @@ class Position(models.Model):
         return f'{self.title}({self.department})'
 
 
+

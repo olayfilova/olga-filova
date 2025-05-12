@@ -1,5 +1,5 @@
 from django.urls import path
-from first_app.views import func_views, generic_views
+from first_app.views import func_views, generic_views, homework_querysets
 
 
 
@@ -23,5 +23,5 @@ urlpatterns=[
     #
     path('queryset-route/', func_views.queryset_route, name='queryset_route'),
     path('salary-calculator/', generic_views.SalaryCalculatorView.as_view(), name='salary_calc'),
-
+    path('homework-querysets/', homework_querysets.homework_querysets, name='homework_querysets'),
 ]

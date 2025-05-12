@@ -28,3 +28,4 @@ def homework_querysets(request):
     }
 
     return render(request, 'querysets_results.html', context)
+

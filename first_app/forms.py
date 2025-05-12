@@ -55,6 +55,7 @@ class CompanyForm(forms.ModelForm):
         fields = ['name', 'address', 'email', 'tax_code']
 
 
+
 class StudentForm(forms.ModelForm):
     class Meta():
         model = Student

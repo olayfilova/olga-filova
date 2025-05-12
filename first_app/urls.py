@@ -2,7 +2,6 @@ from django.urls import path
 from first_app.views import func_views, generic_views, homework_querysets
 
 
-
 urlpatterns=[
     path('employees/', func_views.employee_list, name='employee_list'),
     # path('employees_1/', func_views.employee_list, name='employee_list'),

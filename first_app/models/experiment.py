@@ -47,6 +47,7 @@ class ArticleManager(models.Manager):
         #return self.get_queryset()
 
 
+
 class Article(MyBaseModel):
     STATUS_CHOICES=((-1, 'Draft'), (0, 'Not Published'), (1, 'Published'))
 

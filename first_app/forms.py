@@ -9,11 +9,13 @@ from datetime import date
 from first_app.common.enums import WorkDayEnum
 
 
+
 class EmployeeForm(forms.ModelForm):
     class Meta():
         model = Employee
         fields=('username', 'first_name', 'last_name', 'email','position')
         #fields=('username', 'first_name', 'last_name', 'position', 'email', 'phone_number', 'salary', 'hire_date', 'projects')
+
 
 class SalaryForm(forms.Form):
     employee=forms.ModelChoiceField(queryset=Employee.objects.all())

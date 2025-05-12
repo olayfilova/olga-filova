@@ -10,6 +10,7 @@ class Migration(migrations.Migration):
         ('first_app', '0005_experiment_article_experiment2'),
     ]
 
+
     operations = [
         migrations.AlterField(
             model_name='position',

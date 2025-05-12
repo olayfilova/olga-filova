@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from first_app.models import Department, Position
 
 
+
 def homework_querysets(request):
     departments_with_managers= Department.objects.filter(positions__is_manager=True).order_by("name").distinct()
 

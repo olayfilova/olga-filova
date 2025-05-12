@@ -19,5 +19,6 @@ class Student(models.Model):
     phone_number=models.CharField(max_length=115, blank=True, null=True)
 
 
+
     def __str__(self):
         return f'{self.first_name} {self.last_name}({self.course})'

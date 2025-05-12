@@ -24,4 +24,5 @@ urlpatterns=[
     path('queryset-route/', func_views.queryset_route, name='queryset_route'),
     path('salary-calculator/', generic_views.SalaryCalculatorView.as_view(), name='salary_calc'),
     path('homework-querysets/', homework_querysets.homework_querysets, name='homework_querysets'),
+
 ]

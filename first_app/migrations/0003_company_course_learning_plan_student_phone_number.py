@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
         ('first_app', '0002_alter_department_parent_department'),
     ]
 
+
     operations = [
         migrations.CreateModel(
             name='Company',

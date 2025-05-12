@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
         ('first_app', '0004_position_monthly_rate'),
     ]
 
+
     operations = [
         migrations.CreateModel(
             name='Experiment',

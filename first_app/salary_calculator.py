@@ -32,7 +32,6 @@ class CalculateMonthSalaryRate(AbstractSalaryCalculator):
         return math.ceil(self.employee.position.salary/base_working_days)
 
 
-
     def _calculate_sick_days_payment(self, sick_days: int):
         return sick_days*self._daily_payment*self.sick_days_multiplier
 

@@ -16,7 +16,6 @@ def examples():
     #active_position=active_position.annotate(position = Value('position', output_field=CharField()))
 
 
-
     departments=list(active_position)
     # acticles_ordered=list(Article.objects.order_by('title'))
     #unique_positions=Position.objects.distinct('title')

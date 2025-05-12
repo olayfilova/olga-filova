@@ -56,7 +56,6 @@ class Article(MyBaseModel):
     status=models.IntegerField(choices=STATUS_CHOICES, default=0)
 
 
-
     objects=ArticleManager()
 
     def __repr__(self):

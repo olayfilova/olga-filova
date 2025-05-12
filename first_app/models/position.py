@@ -4,7 +4,7 @@ class Position(models.Model):
     title=models.CharField(max_length=50)
     is_manager=models.BooleanField(default=False)
     is_active=models.BooleanField(default=True)
-    department=models.ForeignKey('Department', on_delete=models.CASCADE)
+    department=models.ForeignKey('Department', on_delete=models.CASCADE, related_name='positions')
     monthly_rate=models.IntegerField(default=0)
 
 

@@ -58,3 +58,4 @@ class CalculateMonthSalaryRate(AbstractSalaryCalculator):
         salary= work_days_payment + sick_days_payment
 
         return salary if salary<=self.employee.position.monthly_rate else self.employee.position.monthly_rate
+

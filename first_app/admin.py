@@ -3,6 +3,7 @@ from .models import Employee, Department, Position, Experiment, Article
 from django.contrib import admin
 from .models import Student, Course, Company
 
+
 # Register your models here.
 
 

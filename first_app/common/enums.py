@@ -1,5 +1,6 @@
 from enum import StrEnum, auto
 
+
 class WorkDayEnum(StrEnum):
     WORKING_DAY=auto()
     VACATION='vacation'

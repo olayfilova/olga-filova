@@ -12,7 +12,6 @@ from first_app.mixins import UserIsAdminMixin
 
 
 
-
 class EmployeeListView(ListView):
     model=Employee
     template_name='employees_list.html'

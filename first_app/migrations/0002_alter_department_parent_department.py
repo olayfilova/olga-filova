@@ -10,6 +10,7 @@ class Migration(migrations.Migration):
         ('first_app', '0001_initial'),
     ]
 
+
     operations = [
         migrations.AlterField(
             model_name='department',

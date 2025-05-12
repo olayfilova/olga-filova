@@ -55,7 +55,6 @@ class CourseAdmin(admin.ModelAdmin):
 
 
 
-
 # @admin.register(Experiment)
 # class ExperimentAdmin(admin.ModelAdmin):
 #     pass

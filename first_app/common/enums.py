@@ -9,5 +9,6 @@ class WorkDayEnum(StrEnum):
     HOLLIDAY='holliday'
 
 
+
 for a in  WorkDayEnum:
     print(a)

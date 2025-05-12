@@ -46,6 +46,7 @@ class SalaryForm(forms.Form):
                                                     initial=WorkDayEnum.WORKING_DAY.value)
 
 
+
 class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company

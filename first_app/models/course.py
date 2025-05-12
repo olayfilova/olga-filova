@@ -7,3 +7,4 @@ class Course(models.Model):
     learning_plan=models.TextField(blank=True, null=True)
 
 
+

@@ -5,6 +5,7 @@ from django.db.models import Count, Value, CharField
 from first_app.models import Article, Department, Position
 
 
+
 def examples():
     articles=Article.objects.filter(status__lte=1)
     #articles=Article.objects.filter(status__gte=-1)

@@ -1,3 +1,6 @@
 .idea
 *.xml
 .venv
+*.log
+*.log.*
+*sqlite3

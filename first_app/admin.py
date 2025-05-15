@@ -26,7 +26,7 @@ class DbConnection:
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display=('username', 'position', 'email', 'hire_date')
+    list_display=('username', 'position', 'email', 'hire_date', 'salary')
 
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):

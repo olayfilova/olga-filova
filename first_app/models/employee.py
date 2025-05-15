@@ -6,6 +6,6 @@ class Employee(AbstractUser):
     birth_date=models.DateField(null=True, blank=True)
     hire_date=models.DateField(null=True, blank=True)
     position=models.ForeignKey('Position', on_delete=models.SET_NULL, null=True)
-
+    salary=models.IntegerField(null=True, blank=True)
 
 

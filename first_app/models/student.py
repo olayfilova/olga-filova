@@ -11,7 +11,7 @@ class Student(models.Model):
     last_name = models.TextField(max_length=100)
     completed_lessons = models.IntegerField()
     birth_date = models.DateField()
-    avatar = models.ImageField(upload_to='avatars')
+    avatar = models.ImageField(upload_to='avatars', null=True, blank=True)
     email = models.EmailField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

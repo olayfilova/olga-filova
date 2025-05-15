@@ -1,13 +1,35 @@
+import logging
+
 from django.db.models import Q
 from django.http import HttpResponse
 from django.urls import reverse
-from first_app.models import Employee, Company, Student
+from first_app.models import Employee, Company, Student, Leave
 from django.shortcuts import render, redirect, get_object_or_404
 
-from first_app.forms import CompanyForm, EmployeeForm, StudentForm
+from first_app.forms import CompanyForm, EmployeeForm, StudentForm, LeaveForm
 from first_app.querysets import examples
 #from first_app.models import company, student
 
+#logger = logging.getLogger('default')
+
+
+def leave_create(request):
+    if request.method == 'POST':
+        form =LeaveForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('leave_list')
+
+    else:
+        form= LeaveForm()
+
+    return render(request, 'leave_form.html', {'form': form})
+
+
+
+def leave_list(request):
+    leaves = Leave.objects.all()
+    return render(request, 'leave_list.html', {'leaves': leaves})
 
 
 def employee_list(request):
@@ -32,6 +54,9 @@ def employee_list(request):
         "page_title": "...: Employee list",
         "employees": employees
     }
+#    logger.info("Here is logging message:")
+
+
     return render(request, 'employee_list.html', context=context)
 
 def employee_update(request, pk):
@@ -65,7 +90,7 @@ def company_create(request):
         form = CompanyForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('company_list.html'))
+            return redirect(reverse('company_list'))
         return render(request, 'company_form.html', {'form': form})
     else:
         form = CompanyForm()
@@ -78,7 +103,7 @@ def company_update(request, pk):
         form = CompanyForm(request.POST, instance=company)
         if form.is_valid():
             form.save()
-            return redirect(reverse('company_list.html'))
+            return redirect(reverse('company_list'))
         return render(request, 'company_form.html', {'form': form})
     else:
         form = CompanyForm(instance=company)

@@ -2,11 +2,65 @@ from django import forms
 #from django.contrib.gis.gdal import field
 from django.forms import ChoiceField
 
-from first_app.models import Employee, Company, Student
+from first_app.models import Employee, Company, Student, Leave
 import calendar
 from datetime import date
 
 from first_app.common.enums import WorkDayEnum
+
+
+class LeaveForm(forms.ModelForm):
+    class Meta:
+        model = Leave
+        fields = ['employee', 'start_date', 'end_date', 'leave_type']
+
+        widgets = {
+            'employee': forms.Select(attrs={'class': 'form-select'}),
+            'start_date': forms.DateInput(attrs={
+                'class': 'form-control',
+                'type': 'date'
+            }),
+            'end_date': forms.DateInput(attrs={
+                'class': 'form-control',
+                'type': 'date'
+            }),
+            'leave_type': forms.Select(attrs={'class': 'form-select'}),
+        }
+
+
+
+    def clean_employee(self):
+        employee = self.cleaned_data.get('employee')
+        if not employee:
+            raise forms.ValidationError("Employee selection is required")
+        return employee
+
+    def clean(self):
+        cleaned_data = super().clean()
+        employee = cleaned_data.get('employee')
+        leave_type = cleaned_data.get('leave_type')
+
+        if employee and leave_type:
+            if leave_type == 'SICK':
+                sick_days_count = Leave.objects.filter(
+                    employee=employee,
+                    leave_type='SICK'
+                ).count()
+
+                if sick_days_count>=5:
+                    raise forms.ValidationError("Employee has exceeded the maximum limit of 5 sick days")
+
+        if leave_type == "HOLIDAY":
+            holiday_days_count = Leave.objects.filter(
+                employee=employee,
+                leave_type = 'HOLIDAY'
+            ).count()
+
+            if holiday_days_count >=3:
+                raise forms.ValidationError("Employee has exceeded the maximum limit of 3 holiday days")
+
+
+        return cleaned_data
 
 
 
@@ -15,6 +69,7 @@ class EmployeeForm(forms.ModelForm):
         model = Employee
         fields=('username', 'first_name', 'last_name', 'email','position', 'salary')
         #fields=('username', 'first_name', 'last_name', 'position', 'email', 'phone_number', 'salary', 'hire_date', 'projects')
+
 
 
 class SalaryForm(forms.Form):
@@ -49,6 +104,7 @@ class SalaryForm(forms.Form):
 
 
 
+
 class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
@@ -57,6 +113,9 @@ class CompanyForm(forms.ModelForm):
 
 
 class StudentForm(forms.ModelForm):
-    class Meta():
+    class Meta:
         model = Student
         fields=('first_name', 'last_name', 'email','phone_number')
+
+
+

@@ -7,7 +7,7 @@ class WorkDayEnum(StrEnum):
     SICK_DAY='sick_day'
     WEEKEND='weekend'
     UNPAID_DAY='unpaid_day'
-    HOLLIDAY='holliday'
+    HOLIDAY='holiday'
 
 
 for a in  WorkDayEnum:

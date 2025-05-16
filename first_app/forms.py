@@ -28,6 +28,78 @@ class LeaveForm(forms.ModelForm):
         }
 
 
+    def clean(self):
+        cleaned_data = super().clean()
+        employee = cleaned_data.get('employee')
+        start_date = cleaned_data.get('start_date')
+        end_date = cleaned_data.get('end_date')
+        leave_type = cleaned_data.get('leave_type')
+
+        # if employee and leave_type:
+        #     if leave_type == 'SICK_DAY':
+        #         sick_days_count = Leave.objects.filter(
+        #             employee=employee,
+        #             leave_type='SICK_DAY'
+        #         ).count()
+        #
+        #         if sick_days_count>=5:
+        #             raise forms.ValidationError("Employee has exceeded the maximum limit of 5 sick days")
+        #
+        # if leave_type == "HOLIDAY":
+        #     holiday_days_count = Leave.objects.filter(
+        #         employee=employee,
+        #         leave_type = 'HOLIDAY'
+        #     ).count()
+        #
+        #     if holiday_days_count >=3:
+        #         raise forms.ValidationError("Employee has exceeded the maximum limit of 3 holiday days")
+        #
+
+        # Date validation
+        if start_date and end_date:
+            if start_date > end_date:
+                raise forms.ValidationError("End date cannot be before start date")
+
+            if start_date < date.today():
+                raise forms.ValidationError("Start date cannot be in the past")
+
+        # Calculate leave duration
+        if start_date and end_date:
+            leave_duration = (end_date - start_date).days + 1
+
+            # Get existing leaves for the employee in the current year
+            current_year = date.today().year
+            existing_leaves = Leave.objects.filter(
+                employee=employee,
+                leave_type=leave_type,
+                start_date__year=current_year
+            )
+
+            # Validate overlapping leaves
+            for leave in existing_leaves:
+                if (start_date <= leave.end_date and end_date >= leave.start_date):
+                    raise forms.ValidationError("Leave period overlaps with existing leave")
+
+            # Leave type specific validation
+            if leave_type == 'SICK_DAY':
+                sick_days_used = sum((leave.end_date - leave.start_date).days + 1
+                                     for leave in existing_leaves)
+                if sick_days_used + leave_duration > 5:
+                    raise forms.ValidationError(
+                        f"Employee can only take 5 sick days per year. "
+                        f"Already used: {sick_days_used} days"
+                    )
+
+            elif leave_type == 'HOLIDAY':
+                holiday_days_used = sum((leave.end_date - leave.start_date).days + 1
+                                        for leave in existing_leaves)
+                if holiday_days_used + leave_duration > 3:
+                    raise forms.ValidationError(
+                        f"Employee can only take 3 holiday days per year. "
+                        f"Already used: {holiday_days_used} days"
+                    )
+        return cleaned_data
+
 
     def clean_employee(self):
         employee = self.cleaned_data.get('employee')
@@ -35,32 +107,6 @@ class LeaveForm(forms.ModelForm):
             raise forms.ValidationError("Employee selection is required")
         return employee
 
-    def clean(self):
-        cleaned_data = super().clean()
-        employee = cleaned_data.get('employee')
-        leave_type = cleaned_data.get('leave_type')
-
-        if employee and leave_type:
-            if leave_type == 'SICK':
-                sick_days_count = Leave.objects.filter(
-                    employee=employee,
-                    leave_type='SICK'
-                ).count()
-
-                if sick_days_count>=5:
-                    raise forms.ValidationError("Employee has exceeded the maximum limit of 5 sick days")
-
-        if leave_type == "HOLIDAY":
-            holiday_days_count = Leave.objects.filter(
-                employee=employee,
-                leave_type = 'HOLIDAY'
-            ).count()
-
-            if holiday_days_count >=3:
-                raise forms.ValidationError("Employee has exceeded the maximum limit of 3 holiday days")
-
-
-        return cleaned_data
 
 
 

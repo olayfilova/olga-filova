@@ -2,6 +2,8 @@ import logging
 
 from django.utils.deprecation import MiddlewareMixin
 
+from DjangoHilelProject.general.models import RequestStatistics
+
 logger = logging.getLogger('middlewares')
 
 
@@ -30,3 +32,18 @@ class RequestStatisticMiddleware(MiddlewareMixin):
                stats.save()
 
 
+
+        def process_exception(self, request, exception):
+            # logger.error(f'Exception: {exception}')
+            # return None
+            if request.user.is_authenticated and not request.path.startswith('/admin'):
+                try:
+                    stats, is_created=RequestStatistics.objects.get_or_create(user=request.user)
+                    stats.exceptions+= 1
+                    stats.save()
+
+                    logger.error(f'Exception occurred for user{request.user}: {str(exception)}')
+                except Exception as e:
+                    logger.error(f'Error in process_exception:{str(e)}')
+
+            return None

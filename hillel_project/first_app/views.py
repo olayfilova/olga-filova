@@ -8,7 +8,7 @@ MVT - model view template
 
 """
 
-
+"""test line"""
 def hello(request):
     raise Exception
     return response.HttpResponse("<h2> Hello </h2> \n <a href='google.com'> Google </a>")

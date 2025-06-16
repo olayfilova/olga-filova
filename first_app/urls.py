@@ -1,7 +1,7 @@
 from django.urls import path
-from first_app.views import func_views
+from first_app.views import func_views, generic_views
 
-from views import generic_views
+
 
 urlpatterns=[
     path('employees/', func_views.employee_list, name='employee_list'),

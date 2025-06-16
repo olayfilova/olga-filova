@@ -6,7 +6,7 @@ from first_app.models import Employee, Company, Student
 import calendar
 from datetime import date
 
-from common.enums import WorkDayEnum
+from first_app.common.enums import WorkDayEnum
 
 
 class EmployeeForm(forms.ModelForm):

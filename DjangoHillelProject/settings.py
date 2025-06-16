@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'DjangoHilelProject.urls'
+ROOT_URLCONF = 'DjangoHillelProject.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DjangoHilelProject.wsgi.application'
+WSGI_APPLICATION = 'DjangoHillelProject.wsgi.application'
 
 
 # Database

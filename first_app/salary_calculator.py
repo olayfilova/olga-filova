@@ -25,7 +25,7 @@ class CalculateMonthSalaryRate(AbstractSalaryCalculator):
 
     @staticmethod
     def _calculate_base_work_days(days_dict):
-        return len({day: work_type for day, work_type in days_dict.items() if work_type not in(WorkDayEnum.WEEKEND.name, WorkDayEnum.HOLLIDAY.name)})
+        return len({day: work_type for day, work_type in days_dict.items() if work_type not in(WorkDayEnum.WEEKEND.name, WorkDayEnum.HOLIDAY.name)})
 
 
     def _get_daily_salary(self, base_working_days:int):

@@ -1,5 +1,6 @@
 from django import forms
-#from django.contrib.gis.gdal import field
+
+
 from django.forms import ChoiceField
 
 from first_app.models import Employee, Company, Student
@@ -31,13 +32,13 @@ class SalaryForm(forms.Form):
             field_name=f'day_{day}'
 
 
-            if calendar.weekday(today.year, today.month)>=5:
-                self.field[field.name]=ChoiceField(label=f'{day} - {weekday_name}',
+            if calendar.weekday(today.year, today.month, day)>=5:
+                self.fields[field_name]=ChoiceField(label=f'{day} - {weekday_name}',
                                                    # choices=[(0, '0'), (8, '8')])
                                                    choices=[(WorkDayEnum.WEEKEND.name, WorkDayEnum.WEEKEND.value)],
                                                     initial=WorkDayEnum.WEEKEND.value)
             else:
-                self.field[field.name]=ChoiceField(label=f'{day} - {weekday_name}',
+                self.fields[field_name]=ChoiceField(label=f'{day} - {weekday_name}',
                                                    choices=[(option.name, option.value) for option in WorkDayEnum],
                                                    # choices=[(WorkDayEnum.WORKING_DAY.name, WorkDayEnum.WORKING_DAY.value),
                                                    #          (WorkDayEnum.VACATION.name, WorkDayEnum.VACATION.value),

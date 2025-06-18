@@ -8,10 +8,11 @@ from first_app.forms import EmployeeForm, SalaryForm
 from first_app.models import Employee
 from first_app.salary_calculator import CalculateMonthSalaryRate
 from first_app.my_utils import is_user_superuser
+from first_app.mixins import UserIsAdminMixin
 
 class EmployeeListView(ListView):
     model=Employee
-    template_name='employees_list.html'
+    template_name='employee_list.html'
     context_object_name='employees'
 
     def get_queryset(self):
@@ -35,7 +36,7 @@ class EmployeeCreateView(CreateView):
         return is_user_superuser(self.request.user)
 
 
-class EmployeeUpdateView(UpdateView):
+class EmployeeUpdateView(UserPassesTestMixin, UpdateView):
     model=Employee
     form_class=EmployeeForm
     template_name='employee_form.html'
@@ -65,6 +66,7 @@ class SalaryCalculatorView(UserPassesTestMixin, FormView):
     success_url=reverse_lazy('salary_calculator')
 
     def test_func(self):
+        #return is_user_superuser()
         return is_user_superuser(self.request.user)
 
     def form_valid(self, form):

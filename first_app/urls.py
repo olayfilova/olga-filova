@@ -4,11 +4,13 @@ from first_app.views import func_views, generic_views
 
 
 urlpatterns=[
-    path('employees/', func_views.employee_list, name='employee_list'),
+    # path('employees/', func_views.employee_list, name='employee_list'),
+    path('employees/', generic_views.EmployeeListView.as_view(), name='employee_list'),
     # path('employees_1/', func_views.employee_list, name='employee_list'),
     # path('employees_2/', func_views.employee_list, name='employee_list'),
     # path('employees_3/', func_views.employee_list, name='employee_list'),
-    path('employees/update/<int:pk>', func_views.employee_update, name='employee_update'),
+    # path('employees/update/<int:pk>', func_views.employee_update, name='employee_update'),
+    path('employees/update/<int:pk>', generic_views.EmployeeUpdateView.as_view(), name='employee_update'),
     path('employees/delete/<int:pk>', func_views.employee_delete, name='employee_delete'),
     #path('employees/', func_views.employee_list, name='employee_list'),
 

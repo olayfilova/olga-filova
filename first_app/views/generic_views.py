@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
 from django.shortcuts import render
@@ -60,39 +62,67 @@ class EmployeeDeleteView(DeleteView):
 
 
 
-class SalaryCalculatorView(UserPassesTestMixin, FormView):
-    template_name='salary_calculator.html'
-    form_class=SalaryForm
-    success_url=reverse_lazy('salary_calculator')
+# class SalaryCalculatorView(UserPassesTestMixin, FormView):
+#     template_name='salary_calculator.html'
+#     form_class=SalaryForm
+#     success_url=reverse_lazy('salary_calculator')
+#
+#     def test_func(self):
+#         #return is_user_superuser()
+#         return is_user_superuser(self.request.user)
+#
+#     # def form_valid(self, form):
+#     #     days_dict=form.cleaned_data
+#     #     salary=CalculateMonthSalaryRate(days_dict)
+#     #     return super().form_valid(form)
+#
+#
+#     def get(self, request, *args ,**kwargs):
+#         form=self.form_class()
+#         # context=super().get_context_data(**kwargs)
+#         # context['salary']=salary
+#         # return context
+#         return render(request, self.template_name, {'form': form})
+#
+#     def form_valid(self, form):
+#         cleaned_data=form.cleaned_data
+#         employee=cleaned_data.get('employee')
+#
+#         calc=CalculateMonthSalaryRate(employee=employee)
+#         #days={day: day_type for day, day_type in cleaned_data.items() if day not in ['employee', 'csrfmiddlewaretoken']}
+#         days={day: day_type for day, day_type in cleaned_data.items() if day.startswith('day_')}
+#
+#         salary=calc.calculate_salary(days_dict=days)
+#         calc.save_salary(salary, datetime.date.today())
+#
+#
+#         return render(request=self.request,
+#                       template_name=self.template_name,
+#                       context={'form': form, 'calculated_salary': salary})
 
-    def test_func(self):
-        #return is_user_superuser()
-        return is_user_superuser(self.request.user)
+
+
+class SalaryCalculatorView(UserIsAdminMixin, FormView):
+    template_name = "salary_calculator.html"
+    form_class = SalaryForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, context={'form': form})
+
 
     def form_valid(self, form):
-        days_dict=form.cleaned_data
-        salary=CalculateMonthSalaryRate(days_dict)
-        return super().form_valid(form)
-
-    def get(self, request, *args ,**kwargs):
-        form=self.form_class()
-        # context=super().get_context_data(**kwargs)
-        # context['salary']=salary
-        # return context
-        return render(request, self.template_name, {'form': form})
-
-    def form_valid(self, form):
-        cleaned_data=form.cleaned_data
-        employee=cleaned_data.get('employee')
-
-        calc=CalculateMonthSalaryRate(employee=employee)
-        #days={day: day_type for day, day_type in cleaned_data.items() if day not in ['employee', 'csrfmiddlewaretoken']}
-        days={day: day_type for day, day_type in cleaned_data.items() if day.startswith('day_')}
-
-        salary=calc.calculate_salary(days_dict=days)
+        cleaned_data = form.cleaned_data
+        employee = cleaned_data.get("employee")
 
 
-        return render(request=self.request,
-                      template_name=self.template_name,
-                      context={'form': form, 'calculated_salary': salary})
+        calc = CalculateMonthSalaryRate(employee=employee)
+        days = {day: day_type for day, day_type in cleaned_data.items() if day.startswith("day_")}
 
+        salary = calc.calculate_salary(days_dict=days)
+        calc.save_salary(salary, datetime.date.today())
+        return render(
+            request=self.request,
+            template_name=self.template_name,
+            context={'form': form, 'calculated_salary': salary}
+        )

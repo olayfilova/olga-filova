@@ -28,6 +28,8 @@ class DbConnection:
 class EmployeeAdmin(admin.ModelAdmin):
     list_display=('username', 'position', 'email', 'hire_date')
 
+
+
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
     list_display=('name', 'parent_department')
@@ -38,16 +40,16 @@ class PositionAdmin(admin.ModelAdmin):
     list_display=('title', 'is_manager', 'is_active')
 
 
-
-
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'phone_number']  # adjust fields as needed
     search_fields = ['first_name', 'last_name', 'phone_number']
 
+
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'tax_code']
+
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):

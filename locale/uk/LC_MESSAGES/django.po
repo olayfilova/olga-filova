@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-20 00:15+0000\n"
+"POT-Creation-Date: 2025-06-20 01:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,38 +20,43 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: first_app/templates/base.html:31
+msgid "Change Language"
+msgstr ""
+
 #: first_app/templates/employee_list.html:4
 msgid "Employee List"
 msgstr ""
 
 #: first_app/templates/employee_list.html:12
 msgid "Filter"
-msgstr ""
+msgstr "фiльтр"
 
 #: first_app/templates/employee_list.html:22
 msgid "name_trans_1"
-msgstr ""
+msgstr "Im'я"
 
 #: first_app/templates/employee_list.html:23
 msgid "Last Name"
-msgstr ""
+msgstr "фамiлiя"
 
 #: first_app/templates/employee_list.html:24
 msgid "Email"
-msgstr ""
+msgstr "iмайл"
 
 #: first_app/templates/employee_list.html:25
 msgid "Position"
-msgstr ""
+msgstr "позицiя"
 
 #: first_app/templates/employee_list.html:26
 msgid "Actions"
-msgstr ""
+msgstr "дiя"
 
 #: first_app/templates/employee_list.html:38
 msgid "Update"
-msgstr ""
+msgstr "оновити"
 
 #: first_app/templates/employee_list.html:39
 msgid "Delete"
-msgstr ""
+msgstr "видалити"

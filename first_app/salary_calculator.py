@@ -34,6 +34,8 @@ class CalculateMonthSalaryRate(AbstractSalaryCalculator):
 
 
     def _get_daily_salary(self, base_working_days:int):
+        if not self.employee.position:
+            return 0  # Default value if position is None
         return math.ceil(self.employee.position.monthly_rate/base_working_days)
 
 
@@ -60,6 +62,10 @@ class CalculateMonthSalaryRate(AbstractSalaryCalculator):
         sick_days_payment = self._get_sick_days_payment(days_dict)
 
         salary = work_days_payment + sick_days_payment
+        
+        # Check if position exists before accessing monthly_rate
+        if not self.employee.position:
+            return salary
         return salary if salary <= self.employee.position.monthly_rate else self.employee.position.monthly_rate
 
     def save_salary(self, salary: int, date: datetime.date):

@@ -126,3 +126,5 @@ class SalaryCalculatorView(UserIsAdminMixin, FormView):
             template_name=self.template_name,
             context={'form': form, 'calculated_salary': salary}
         )
+
+

@@ -1,49 +1,47 @@
 {% extends 'base.html' %}
-{% block title %}
-EMPLOYEE LIST
-{% endblock %}
+{% load i18n %}
 
+{% block title %}{% trans 'Employee List' %} {% endblock %}
 {% block content %}
- <h1>EMPLOYEE LIST</h1>
 <div class="container mt-4">
-    <form method="get">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="search" name="search" value="{{request.GET.search}}">
-            <div class="input-group-append">
-                <button class="btn-primary" type="submit">Filter</button>
-            </div>
-        </div>
-    </form>
-    <div class="row mb-3">
 
-        <a href="{% url 'salary_calc' %}" class="btn btn-info"> Salary Calculator</a>
-</div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Position</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for employee in employees %}
-        <tr>
-            <td>{{employee.first_name}}</td>
-            <td>{{employee.last_name}}</td>
-            <td>{{employee.email}}</td>
-            <td>{{employee.position.title}}</td>
-                <td>{% if request.user.is_superuser %}
-                <a href="{%url 'employee_update' employee.pk%}" class="btn btn-primary">Update</a>
-                <a href="{%url 'employee_delete' employee.pk%}" class="btn btn-primary">Delete</a>
-                {% endif %}
-            </td>
-
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+ <form method="get">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="search" name="search" value="{{ request.GET.search }}">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">{% trans 'Filter' %}</button>
+      </div>
+    </div>
+  </form>
+  <div class="row mb-3">
+    <a href="{% url 'salary_calc' %}" class="btn btn-info">Salary Calculator</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{% trans 'name_trans_1' %}</th>
+        <th>{% trans 'Last Name' %}</th>
+        <th>{% trans 'Email' %}</th>
+        <th>{% trans 'Position' %}</th>
+        <th>{% trans 'Actions' %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in employees %}
+      <tr>
+        <td>{{ employee.first_name }}</td>
+        <td>{{ employee.last_name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.position.title }}</td>
+          <td>
+          {% if request.user.is_superuser %}
+          <a href="{% url 'employee_update' employee.pk %}" class="btn btn-primary">{% trans 'Update' %}</a>
+          <a href="{% url 'employee_delete' employee.pk %}" class="btn btn-danger">{% trans 'Delete' %}</a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 {% endblock %}

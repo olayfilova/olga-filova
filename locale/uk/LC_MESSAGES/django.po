@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-20 01:11+0000\n"
+"POT-Creation-Date: 2025-06-20 02:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,13 +21,27 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
+#: first_app/models/position.py:5
+msgid "Title"
+msgstr ""
+
+#: first_app/models/position.py:9
+#, fuzzy
+#| msgid "Position"
+msgid "Job Description"
+msgstr "позицiя"
+
+#: first_app/models/position.py:10
+msgid "Monthly Rate"
+msgstr "ставка"
+
 #: first_app/templates/base.html:31
 msgid "Change Language"
-msgstr ""
+msgstr "мова"
 
 #: first_app/templates/employee_list.html:4
 msgid "Employee List"
-msgstr ""
+msgstr "спiвробiтники"
 
 #: first_app/templates/employee_list.html:12
 msgid "Filter"

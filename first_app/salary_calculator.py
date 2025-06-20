@@ -2,7 +2,7 @@ import math
 from abc import ABC, abstractmethod
 from first_app.models import Employee
 
-from common.enums import WorkDayEnum
+from first_app.common.enums import WorkDayEnum
 
 
 class AbstractSalaryCalculator(ABC):

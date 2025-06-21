@@ -6,6 +6,8 @@ from first_app.views import func_views, generic_views
 urlpatterns=[
     # path('employees/', func_views.employee_list, name='employee_list'),
     path('employees/', generic_views.EmployeeListView.as_view(), name='employee_list'),
+    #path('employees/', cache_page(10)(generic_views.EmployeeListView.as_view()), name='employee_list'),
+
     # path('employees_1/', func_views.employee_list, name='employee_list'),
     # path('employees_2/', func_views.employee_list, name='employee_list'),
     # path('employees_3/', func_views.employee_list, name='employee_list'),

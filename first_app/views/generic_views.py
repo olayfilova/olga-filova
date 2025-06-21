@@ -1,6 +1,8 @@
+import logging
 import datetime
 
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.core.cache import cache
 from django.db.models import Q
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -11,6 +13,10 @@ from first_app.models import Employee
 from first_app.salary_calculator import CalculateMonthSalaryRate
 from first_app.my_utils import is_user_superuser
 from first_app.mixins import UserIsAdminMixin
+
+
+logger = logging.getLogger('default')
+
 
 class EmployeeListView(ListView):
     model=Employee
@@ -59,6 +65,26 @@ class EmployeeDeleteView(DeleteView):
 
     def test_funk(self):
         return is_user_superuser(self.request.user)
+
+
+class EmployeeDetailsView(UserIsAdminMixin, DetailView):
+    model = Employee
+    template_name = "employee_details.html"
+
+
+    def get_object(self, queryset=None):
+        e_id = self.kwargs.get("pk")
+        employee = cache.get(f"employee_{e_id}")
+        if not employee:
+            logger.warning(f"Employee {e_id} NOT IN CACHE")
+            employee = get_object_or_404(Employee, pk=e_id)
+            cache.set(f"employee_{e_id}", employee, timeout=5)
+        else:
+            logger.info(f"Employee {e_id} WAS IN CACHE")
+
+        return employee
+
+
 
 
 

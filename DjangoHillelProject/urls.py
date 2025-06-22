@@ -1,5 +1,5 @@
 """
-URL configuration for DjangoHilelProject project.
+URL configuration for hillel_project project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -19,12 +19,12 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-
 from general.views import HomePageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path("api/", include('first_app.api_urls')),
+    path("api/docs/", include('general.urls'))
 ]
 
 urlpatterns += i18n_patterns(
@@ -32,6 +32,7 @@ urlpatterns += i18n_patterns(
 
     path('app/', include('first_app.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('accounts/', include(("accounts.urls", "accounts"), namespace="accounts")),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

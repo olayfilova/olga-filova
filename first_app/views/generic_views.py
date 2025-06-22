@@ -35,14 +35,14 @@ class EmployeeListView(ListView):
             return queryset
 
 
-class EmployeeCreateView(CreateView):
+class EmployeeCreateView(UserIsAdminMixin, CreateView):
     model=Employee
     form_class=EmployeeForm
     template_name='employee_form.html'
     success_url=reverse_lazy('employee_list')
 
-    def test_funk(self):
-        return is_user_superuser(self.request.user)
+    # def test_funk(self):
+    #     return is_user_superuser(self.request.user)
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -54,27 +54,27 @@ class EmployeeCreateView(CreateView):
         return super().form_invalid(form)
 
 
-class EmployeeUpdateView(UserPassesTestMixin, UpdateView):
+class EmployeeUpdateView(UserIsAdminMixin, UpdateView):
     model=Employee
     form_class=EmployeeForm
     template_name='employee_form.html'
     success_url=reverse_lazy('employee_list')
 
-    def test_funk(self):
-        return is_user_superuser(self.request.user)
+    # def test_funk(self):
+    #     return is_user_superuser(self.request.user)
 
 
     def is_user_superuser(user):
         pass
 
 
-class EmployeeDeleteView(DeleteView):
+class EmployeeDeleteView(UserIsAdminMixin, DeleteView):
     model=Employee
     template_name='employee_confirm_delete.html'
     success_url=reverse_lazy('employee_list')
 
-    def test_funk(self):
-        return is_user_superuser(self.request.user)
+    # def test_funk(self):
+    #     return is_user_superuser(self.request.user)
 
 #
 # class EmployeeDetailsView(UserIsAdminMixin, DetailView):

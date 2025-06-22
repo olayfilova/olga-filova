@@ -21,7 +21,7 @@ class PositionSerializer(serializers.ModelSerializer):
 
 
 class SalarySerializer(serializers.Serializer):
-    employee = serializers.PrimaryKeyRelatedField(queryset=Employee.objects.all())
+    employee = serializers.PrimaryKeyRelatedField (queryset=Employee.objects.all())
     working_days = serializers.IntegerField()
     holidays_days = serializers.IntegerField()
     sick_days = serializers.IntegerField(default=0)

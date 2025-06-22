@@ -1,6 +1,7 @@
 import logging
 import datetime
 
+from django.contrib import messages
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.core.cache import cache
 from django.db.models import Q
@@ -43,6 +44,15 @@ class EmployeeCreateView(CreateView):
     def test_funk(self):
         return is_user_superuser(self.request.user)
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.warning(self.request, "Employee creates successfully")
+        return response
+
+    def form_invalid(self, form):
+        messages.error(self.request, gettext_lazy("employee_create_error"))
+        return super().form_invalid(form)
+
 
 class EmployeeUpdateView(UserPassesTestMixin, UpdateView):
     model=Employee
@@ -66,23 +76,23 @@ class EmployeeDeleteView(DeleteView):
     def test_funk(self):
         return is_user_superuser(self.request.user)
 
-
-class EmployeeDetailsView(UserIsAdminMixin, DetailView):
-    model = Employee
-    template_name = "employee_details.html"
-
-
-    def get_object(self, queryset=None):
-        e_id = self.kwargs.get("pk")
-        employee = cache.get(f"employee_{e_id}")
-        if not employee:
-            logger.warning(f"Employee {e_id} NOT IN CACHE")
-            employee = get_object_or_404(Employee, pk=e_id)
-            cache.set(f"employee_{e_id}", employee, timeout=5)
-        else:
-            logger.info(f"Employee {e_id} WAS IN CACHE")
-
-        return employee
+#
+# class EmployeeDetailsView(UserIsAdminMixin, DetailView):
+#     model = Employee
+#     template_name = "employee_details.html"
+#
+#
+#     def get_object(self, queryset=None):
+#         e_id = self.kwargs.get("pk")
+#         employee = cache.get(f"employee_{e_id}")
+#         if not employee:
+#             logger.warning(f"Employee {e_id} NOT IN CACHE")
+#             employee = get_object_or_404(Employee, pk=e_id)
+#             cache.set(f"employee_{e_id}", employee, timeout=5)
+#         else:
+#             logger.info(f"Employee {e_id} WAS IN CACHE")
+#
+#         return employee
 
 
 

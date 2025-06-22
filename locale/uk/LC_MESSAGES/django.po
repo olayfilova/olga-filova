@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-20 02:20+0000\n"
+"POT-Creation-Date: 2025-06-21 16:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,42 +35,70 @@ msgstr "позицiя"
 msgid "Monthly Rate"
 msgstr "ставка"
 
-#: first_app/templates/base.html:31
+#: first_app/templates/base.html:33
 msgid "Change Language"
 msgstr "мова"
 
-#: first_app/templates/employee_list.html:4
+#: first_app/templates/employee_list.html:5 first_app/templates/home.html:19
 msgid "Employee List"
 msgstr "спiвробiтники"
 
-#: first_app/templates/employee_list.html:12
+#: first_app/templates/employee_list.html:13
 msgid "Filter"
 msgstr "фiльтр"
 
-#: first_app/templates/employee_list.html:22
+#: first_app/templates/employee_list.html:23
 msgid "name_trans_1"
 msgstr "Im'я"
 
-#: first_app/templates/employee_list.html:23
+#: first_app/templates/employee_list.html:24
 msgid "Last Name"
 msgstr "фамiлiя"
 
-#: first_app/templates/employee_list.html:24
+#: first_app/templates/employee_list.html:25
 msgid "Email"
 msgstr "iмайл"
 
-#: first_app/templates/employee_list.html:25
+#: first_app/templates/employee_list.html:26
 msgid "Position"
 msgstr "позицiя"
 
-#: first_app/templates/employee_list.html:26
+#: first_app/templates/employee_list.html:27
 msgid "Actions"
 msgstr "дiя"
 
-#: first_app/templates/employee_list.html:38
+#: first_app/templates/employee_list.html:40
 msgid "Update"
 msgstr "оновити"
 
-#: first_app/templates/employee_list.html:39
+#: first_app/templates/employee_list.html:41
 msgid "Delete"
 msgstr "видалити"
+
+#: first_app/templates/employee_list.html:42
+msgid "View"
+msgstr ""
+
+#: first_app/templates/home.html:5
+msgid "Home"
+msgstr ""
+
+#: first_app/templates/home.html:14
+msgid "Welcome!"
+msgstr ""
+
+#: first_app/templates/home.html:15
+msgid "This is a simple home page for the HR application."
+msgstr ""
+
+#: first_app/templates/home.html:17
+msgid "You can manage employees or calculate salaries from here."
+msgstr ""
+
+#: first_app/templates/home.html:20
+msgid "Salary Calculator"
+msgstr ""
+
+#: first_app/views/generic_views.py:53
+msgid "employee_create_error"
+msgstr ""

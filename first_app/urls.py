@@ -14,6 +14,7 @@ urlpatterns=[
     # path('employees/update/<int:pk>', func_views.employee_update, name='employee_update'),
     path('employees/update/<int:pk>', generic_views.EmployeeUpdateView.as_view(), name='employee_update'),
     path('employees/delete/<int:pk>', func_views.employee_delete, name='employee_delete'),
+    path('employees/create/<int:pk>', generic_views.EmployeeCreateView.as_view(), name='employee_create'),
     #path('employees/', func_views.employee_list, name='employee_list'),
 
     path('companies/', func_views.company_list, name='company_list'),

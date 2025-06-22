@@ -24,7 +24,7 @@ from general.views import HomePageView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/", include('first_app.api_urls')),
-    path("api/docs/", include('general.urls'))
+    path("api/docs/", include('general.urls')),
 ]
 
 urlpatterns += i18n_patterns(

@@ -38,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
+
+    'rest_framework',
+    'rest_framework.authtoken',
+
+
     'accounts',
     'first_app',
     'general',
@@ -186,4 +192,11 @@ LOGGING = {
             'propagate': False
         },
     }
+}
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication"
+    ]
 }

@@ -25,5 +25,5 @@ urlpatterns=[
     path('students/create/<int:pk>', func_views.student_create, name='student_create'),
     path('students/delete/<int:pk>', func_views.student_delete, name='student_delete'),
     path('querysets/', func_views.queryset, name='queryset'),
-    path('salary_calculator/', generic_views.SalaryCalculatorView.as_view(), name='salary_calc')
+    path('salary_calculator/', generic_views.SalaryCalculatorView.as_view(), name='salary_calc'),
 ]

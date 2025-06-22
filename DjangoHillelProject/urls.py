@@ -24,6 +24,7 @@ from general.views import HomePageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 urlpatterns += i18n_patterns(

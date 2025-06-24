@@ -4,10 +4,10 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, FormView, DeleteView, CreateView, UpdateView
 
-from forms import EmployeeForm, SalaryForm
-from models import Employee
-from salary_calculator import CalculateMonthSalaryRate
-from first_app.utils import is_user_superuser
+from first_app.forms import EmployeeForm, SalaryForm
+from first_app.models import Employee
+from first_app.salary_calculator import CalculateMonthSalaryRate
+from first_app.my_utils import is_user_superuser
 
 class EmployeeListView(ListView):
     model=Employee
@@ -93,4 +93,3 @@ class SalaryCalculatorView(UserPassesTestMixin, FormView):
         return render(request=self.request,
                       template_name=self.template_name,
                       context={'form': form, 'calculated_salary': salary})
-                      , self.template_name, {'form': form, 'salary': salary})

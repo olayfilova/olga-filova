@@ -5,7 +5,7 @@ from django.forms import ChoiceField
 
 from first_app.models import Employee
 
-from common.enums import WorkDayEnum
+from first_app.common.enums import WorkDayEnum
 
 
 class EmployeeForm(forms.ModelForm):

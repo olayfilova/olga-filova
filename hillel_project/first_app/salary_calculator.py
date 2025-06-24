@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 import datetime
 
 from first_app.models import Employee, MonthlySalary
-from common.enums import WorkDayEnum
+from first_app.common.enums import WorkDayEnum
 
 logger = logging.getLogger("default")
 

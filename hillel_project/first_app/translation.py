@@ -1,4 +1,4 @@
-from modeltranslation.translator import TranslationOptions, register
+from modeltranslation.translator import TranslationOptions, register, translator
 
 from first_app.models import Position
 

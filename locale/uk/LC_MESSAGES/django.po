@@ -23,29 +23,29 @@ msgstr ""
 
 #: first_app/models/position.py:5
 msgid "Title"
-msgstr ""
+msgstr "Назва"
 
 #: first_app/models/position.py:9
 #, fuzzy
 #| msgid "Position"
 msgid "Job Description"
-msgstr "позицiя"
+msgstr "Позицiя"
 
 #: first_app/models/position.py:10
 msgid "Monthly Rate"
-msgstr "ставка"
+msgstr "Ставка"
 
 #: first_app/templates/base.html:33
 msgid "Change Language"
-msgstr "мова"
+msgstr "Мова"
 
 #: first_app/templates/employee_list.html:5 first_app/templates/home.html:19
 msgid "Employee List"
-msgstr "спiвробiтники"
+msgstr "Спiвробiтники"
 
 #: first_app/templates/employee_list.html:13
 msgid "Filter"
-msgstr "фiльтр"
+msgstr "Фiльтр"
 
 #: first_app/templates/employee_list.html:23
 msgid "name_trans_1"
@@ -53,7 +53,7 @@ msgstr "Im'я"
 
 #: first_app/templates/employee_list.html:24
 msgid "Last Name"
-msgstr "фамiлiя"
+msgstr "Призвище"
 
 #: first_app/templates/employee_list.html:25
 msgid "Email"
@@ -61,31 +61,31 @@ msgstr "iмайл"
 
 #: first_app/templates/employee_list.html:26
 msgid "Position"
-msgstr "позицiя"
+msgstr "Позицiя"
 
 #: first_app/templates/employee_list.html:27
 msgid "Actions"
-msgstr "дiя"
+msgstr "Дiя"
 
 #: first_app/templates/employee_list.html:40
 msgid "Update"
-msgstr "оновити"
+msgstr "Оновити"
 
 #: first_app/templates/employee_list.html:41
 msgid "Delete"
-msgstr "видалити"
+msgstr "Видалити"
 
 #: first_app/templates/employee_list.html:42
 msgid "View"
-msgstr ""
+msgstr "Переглянути"
 
 #: first_app/templates/home.html:5
 msgid "Home"
-msgstr ""
+msgstr "Домiвка"
 
 #: first_app/templates/home.html:14
 msgid "Welcome!"
-msgstr ""
+msgstr "Вiтаю"
 
 #: first_app/templates/home.html:15
 msgid "This is a simple home page for the HR application."

@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils.functional import cached_property
+from django.utils.translation import gettext_lazy as _
 
 
 class Department(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(verbose_name=_("Департамент"), max_length=200)
     parent_department = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True)
 
     @cached_property

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-24 23:30+0000\n"
+"POT-Creation-Date: 2025-06-25 11:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,110 +21,111 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: first_app/models/company.py:8
+#: hillel_project/first_app/models/company.py:8
 msgid "Назва компанії"
 msgstr "Назва компанії"
 
-#: first_app/models/department.py:7
+#: hillel_project/first_app/models/department.py:7
 msgid "Департамент"
 msgstr "Департамент"
 
-#: first_app/models/position.py:5
+#: hillel_project/first_app/models/position.py:5
 msgid "Title"
 msgstr ""
 
-#: first_app/models/position.py:9
+#: hillel_project/first_app/models/position.py:9
 msgid "Job Description"
 msgstr ""
 
-#: first_app/models/position.py:10
+#: hillel_project/first_app/models/position.py:10
 msgid "Monthly Rate"
 msgstr ""
 
-#: first_app/views/generic_views.py:52
+#: hillel_project/first_app/views/generic_views.py:52
 msgid "employee_create_error"
 msgstr ""
 
-#: templates/accounts/login.html:8
+#: hillel_project/templates/accounts/login.html:8
 msgid "Login"
 msgstr ""
 
-#: templates/accounts/login.html:19
+#: hillel_project/templates/accounts/login.html:19
 msgid "Username"
 msgstr ""
 
-#: templates/accounts/login.html:28
+#: hillel_project/templates/accounts/login.html:28
 msgid "Password"
 msgstr ""
 
-#: templates/accounts/login.html:37
+#: hillel_project/templates/accounts/login.html:37
 msgid "Forgot your password?"
 msgstr ""
 
-#: templates/base.html:33
+#: hillel_project/templates/base.html:33
 msgid "Change Language"
 msgstr ""
 
-#: templates/first_app/employee_list.html:5 templates/home.html:19
+#: hillel_project/templates/first_app/employee_list.html:5
+#: hillel_project/templates/home.html:19
 msgid "Employee List"
 msgstr ""
 
-#: templates/first_app/employee_list.html:13
+#: hillel_project/templates/first_app/employee_list.html:13
 msgid "Filter"
 msgstr ""
 
-#: templates/first_app/employee_list.html:19
+#: hillel_project/templates/first_app/employee_list.html:19
 msgid "Create New Employee"
 msgstr ""
 
-#: templates/first_app/employee_list.html:38
+#: hillel_project/templates/first_app/employee_list.html:38
 msgid "name_trans_1"
 msgstr "Iм'я"
 
-#: templates/first_app/employee_list.html:39
+#: hillel_project/templates/first_app/employee_list.html:39
 msgid "Last Name"
 msgstr "Призвище"
 
-#: templates/first_app/employee_list.html:40
+#: hillel_project/templates/first_app/employee_list.html:40
 msgid "Email"
 msgstr ""
 
-#: templates/first_app/employee_list.html:41
+#: hillel_project/templates/first_app/employee_list.html:41
 msgid "Position"
 msgstr ""
 
-#: templates/first_app/employee_list.html:42
+#: hillel_project/templates/first_app/employee_list.html:42
 msgid "Actions"
 msgstr ""
 
-#: templates/first_app/employee_list.html:55
+#: hillel_project/templates/first_app/employee_list.html:55
 msgid "Update"
 msgstr ""
 
-#: templates/first_app/employee_list.html:56
+#: hillel_project/templates/first_app/employee_list.html:56
 msgid "Delete"
 msgstr ""
 
-#: templates/first_app/employee_list.html:57
+#: hillel_project/templates/first_app/employee_list.html:57
 msgid "View"
 msgstr ""
 
-#: templates/home.html:5
+#: hillel_project/templates/home.html:5
 msgid "Home"
 msgstr ""
 
-#: templates/home.html:14
+#: hillel_project/templates/home.html:14
 msgid "Welcome!"
 msgstr ""
 
-#: templates/home.html:15
+#: hillel_project/templates/home.html:15
 msgid "This is a simple home page for the HR application."
 msgstr ""
 
-#: templates/home.html:17
+#: hillel_project/templates/home.html:17
 msgid "You can manage employees or calculate salaries from here."
 msgstr ""
 
-#: templates/home.html:20
+#: hillel_project/templates/home.html:20
 msgid "Salary Calculator"
 msgstr ""

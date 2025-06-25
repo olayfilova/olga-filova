@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 16:02+0000\n"
+"POT-Creation-Date: 2025-06-25 11:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,57 +35,73 @@ msgstr "позицiя"
 msgid "Monthly Rate"
 msgstr "ставка"
 
-#: first_app/templates/base.html:33
+#: first_app/templates/accounts/login.html:8
+msgid "Login"
+msgstr ""
+
+#: first_app/templates/accounts/login.html:19
+msgid "Username"
+msgstr ""
+
+#: first_app/templates/accounts/login.html:28
+msgid "Password"
+msgstr ""
+
+#: first_app/templates/accounts/login.html:37
+msgid "Forgot your password?"
+msgstr ""
+
+#: first_app/templates/base.html:34
 msgid "Change Language"
 msgstr "мова"
 
 #: first_app/templates/employee_list.html:5 first_app/templates/home.html:19
 msgid "Employee List"
-msgstr "спiвробiтники"
+msgstr "Cпiвробiтники"
 
 #: first_app/templates/employee_list.html:13
 msgid "Filter"
-msgstr "фiльтр"
+msgstr "Фiльтр"
 
-#: first_app/templates/employee_list.html:23
+#: first_app/templates/employee_list.html:36
 msgid "name_trans_1"
 msgstr "Im'я"
 
-#: first_app/templates/employee_list.html:24
+#: first_app/templates/employee_list.html:37
 msgid "Last Name"
-msgstr "фамiлiя"
+msgstr "Фамiлiя"
 
-#: first_app/templates/employee_list.html:25
+#: first_app/templates/employee_list.html:38
 msgid "Email"
-msgstr "iмайл"
+msgstr "Пошта"
 
-#: first_app/templates/employee_list.html:26
+#: first_app/templates/employee_list.html:39
 msgid "Position"
-msgstr "позицiя"
-
-#: first_app/templates/employee_list.html:27
-msgid "Actions"
-msgstr "дiя"
+msgstr "Позицiя"
 
 #: first_app/templates/employee_list.html:40
+msgid "Actions"
+msgstr "Дiя"
+
+#: first_app/templates/employee_list.html:53
 msgid "Update"
-msgstr "оновити"
+msgstr "Оновити"
 
-#: first_app/templates/employee_list.html:41
+#: first_app/templates/employee_list.html:54
 msgid "Delete"
-msgstr "видалити"
+msgstr "Видалити"
 
-#: first_app/templates/employee_list.html:42
+#: first_app/templates/employee_list.html:55
 msgid "View"
-msgstr ""
+msgstr "Переглянути"
 
 #: first_app/templates/home.html:5
 msgid "Home"
-msgstr ""
+msgstr "Головна"
 
 #: first_app/templates/home.html:14
 msgid "Welcome!"
-msgstr ""
+msgstr "Доброго дня!"
 
 #: first_app/templates/home.html:15
 msgid "This is a simple home page for the HR application."

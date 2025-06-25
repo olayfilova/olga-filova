@@ -8,6 +8,8 @@ class Company(models.Model):
     address=models.CharField(max_length=200)
     email=models.EmailField()
     tax_code=models.CharField(max_length=50)
+    logo = models.ImageField(upload_to='company_logos/', blank=True, null=True)
+
 
     class Meta:
         verbose_name_plural='Companies'

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Company List{% endblock %}
 
@@ -11,6 +12,12 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">{{ company.name }}</h5>
+
+                    <li class="list-group-item d-flex">
+                     <div class="mr-15">
+<img src="{% if logo %}{{ company_logos }}{% else %}{% static 'img/logo.png' %}{% endif %}" alt="Company Logo">
+                     </div>
+                     </li>
                     <p class="card-text">
                         <strong>Address:</strong> {{ company.address }}<br>
                         <strong>Email:</strong> {{ company.email }}<br>

@@ -23,7 +23,7 @@ from general.views import HomePageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("api/", include('first_app.api_urls')),
+    path("api/", include(('first_app.api_urls', 'first_app'), namespace="first_app")),
     path("api/docs/", include('general.urls')),
 ]
 
@@ -34,5 +34,6 @@ urlpatterns += i18n_patterns(
     path('i18n/', include('django.conf.urls.i18n')),
     path('accounts/', include(("accounts.urls", "accounts"), namespace="accounts")),
 )
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

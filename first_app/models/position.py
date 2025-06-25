@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils.functional import cached_property
+
 
 class Position(models.Model):
     title = models.CharField(verbose_name=_("Title"), max_length=200)
@@ -8,6 +10,16 @@ class Position(models.Model):
     department = models.ForeignKey("Department", on_delete=models.CASCADE)
     description = models.CharField(verbose_name=_("Job Description"), max_length=500, default="")
     monthly_rate = models.IntegerField(default=0, verbose_name=_("Monthly Rate"))
+
+
+    @cached_property
+    def total_positions(self):
+        return Position.objects.count()
+
+    # @cached_property
+    # def get_department(self):
+    #     return self.department.name
+
 
 
     def __str__(self):

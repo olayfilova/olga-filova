@@ -1,14 +1,12 @@
 import logging
 
-from django.contrib.auth import user_logged_in
 from django.core.exceptions import ValidationError
 from django.core.signals import got_request_exception
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
+from first_app.common.constants import MIN_SALARY
 from first_app.models import Position
-
-MIN_SALARY = 2222
 
 logger = logging.getLogger("default")
 

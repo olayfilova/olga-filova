@@ -1,0 +1,1 @@
+MIN_SALARY = 2222
